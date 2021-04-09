@@ -11,7 +11,7 @@ import user, { State as userState } from './modules/user'
 import web, { State as webState } from './modules/web'
 import getters, { rootState } from './getters'
 
-interface Opt {
+export interface Opt {
   modules: { user: Module<userState, Opt>; web: Module<webState, Opt> }
   getters: GetterTree<rootState, rootState>
 }

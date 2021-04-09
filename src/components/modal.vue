@@ -43,14 +43,15 @@ export default defineComponent({
       context.emit('update:modelValue', false)
     }
 
-    const box = ref(null) // https://composition-api.vuejs.org/zh/api.html#%E6%A8%A1%E6%9D%BF-refs
+    //const box = ref(null) // https://composition-api.vuejs.org/zh/api.html#%E6%A8%A1%E6%9D%BF-refs
     const over = ref(null)
     const duration = ref('0.3s')
     const setFlexStyle = () => {
+      // console.log(this)
       // console.log(box)
-      if (box.value) {
-        over.value = box.value.offsetHeight > innerHeight
-      }
+      // if (box.value) {
+      //   over.value = box.value.offsetHeight > innerHeight
+      // }
     }
     onMounted(setFlexStyle)
     watch(() => store.state.web.size, setFlexStyle)
@@ -60,7 +61,7 @@ export default defineComponent({
         if (ni) setTimeout(setFlexStyle, 300)
       },
     )
-    return { closeModal, box, over, duration }
+    return { closeModal, over, duration }
   },
 })
 </script>

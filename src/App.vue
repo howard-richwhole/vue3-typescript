@@ -1,14 +1,13 @@
 <template>
   <div id="nav">
-    <!--
-      <Modal v-model="modalShow">
+    <Modal v-model="modalShow">
       <VeeForm v-slot="{ submitForm }">
-      <Field name="password" rules="min:3" />
-      <ErrorMsg name="password" />
-      <button @click="submitForm">submit</button>
+        <Field name="password" rules="min:3" />
+        <ErrorMsg name="password" />
+        <button @click="submitForm">submit</button>
       </VeeForm>
-      </Modal> 
-    -->
+    </Modal>
+
     {{ $store.state.user.count }}
   </div>
   <!-- <router-view /> -->
@@ -16,6 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+// d(() => {})
 export default defineComponent({
   data() {
     return {

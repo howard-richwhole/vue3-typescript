@@ -61,6 +61,9 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
+    "globals": {
+      "d": "readonly"
+    },
     "rules": {
       "prettier/prettier": [
         2,
