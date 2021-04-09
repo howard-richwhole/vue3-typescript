@@ -1,0 +1,159 @@
+{
+  "name": "vue3",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@types/crypto-js": "^4.0.1",
+    "@types/lodash": "^4.14.168",
+    "@vee-validate/rules": "^4.1.20",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "gsap": "^3.6.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "storage-manager-js": "^4.0.5",
+    "vee-validate": "^4.2.4",
+    "vue": "^3.0.0",
+    "vue-class-component": "^8.0.0-0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.0.0",
+    "imagemin-webp-webpack-plugin": "^3.3.3",
+    "lint-staged": "^9.5.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^2.2.1",
+    "sass-loader": "^8.0.2",
+    "script-ext-html-webpack-plugin": "^2.1.5",
+    "typescript": "~4.1.5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-recommended",
+      "eslint:recommended",
+      "@vue/typescript/recommended",
+      "@vue/prettier",
+      "@vue/prettier/@typescript-eslint"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "prettier/prettier": [
+        2,
+        {
+          "singleQuote": true,
+          "semi": false,
+          "trailingComma": "all",
+          "jsxBracketSameLine": true,
+          "arrowParens": "avoid"
+        }
+      ],
+      "no-console": 1,
+      "no-debugger": 1,
+      "vue/max-attributes-per-line": [
+        2,
+        {
+          "singleline": 5,
+          "multiline": {
+            "max": 5,
+            "allowFirstLine": true
+          }
+        }
+      ],
+      "vue/singleline-html-element-content-newline": 0,
+      "vue/no-v-html": 0,
+      "vue/html-comment-content-newline": 2,
+      "vue/html-comment-content-spacing": 2,
+      "vue/html-comment-indent": 2,
+      "vue/match-component-file-name": 2,
+      "vue/no-empty-component-block": 2,
+      "vue/no-multiple-objects-in-class": 2,
+      "vue/no-reserved-component-names": 2,
+      "vue/padding-line-between-blocks": 2,
+      "vue/static-class-names-order": 2,
+      "vue/arrow-spacing": 2,
+      "vue/block-spacing": 2,
+      "vue/brace-style": [
+        2,
+        "1tbs",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "vue/comma-dangle": [
+        2,
+        "always-multiline"
+      ],
+      "vue/comma-spacing": 2,
+      "vue/comma-style": 2,
+      "vue/eqeqeq": [
+        2,
+        "smart"
+      ],
+      "vue/key-spacing": [
+        2,
+        {
+          "align": "colon"
+        }
+      ],
+      "vue/keyword-spacing": 2,
+      "vue/no-empty-pattern": 2,
+      "vue/no-extra-parens": 2,
+      "vue/no-irregular-whitespace": 2,
+      "vue/no-restricted-syntax": 2,
+      "vue/no-sparse-arrays": 2,
+      "vue/no-useless-concat": 2,
+      "vue/operator-linebreak": [
+        2,
+        "after"
+      ],
+      "vue/space-infix-ops": 2,
+      "vue/space-unary-ops": [
+        2,
+        {
+          "words": true,
+          "nonwords": false
+        }
+      ],
+      "vue/template-curly-spacing": 2
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
