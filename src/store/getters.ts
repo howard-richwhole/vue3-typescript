@@ -10,7 +10,5 @@ export interface rootState {
   web: webState
   user: userState
 }
-// export interface Getters {
-//   token: (state: rootState) => string | null
-// }
+
 export default getters
