@@ -11,12 +11,16 @@ import user, { State as userState } from './modules/user'
 import web, { State as webState } from './modules/web'
 import getters, { rootState } from './getters'
 
-export interface Opt {
+interface Opt {
   modules: { user: Module<userState, Opt>; web: Module<webState, Opt> }
   getters: GetterTree<rootState, rootState>
 }
 
-export const key: InjectionKey<Store<Opt>> = Symbol()
+const key: InjectionKey<Store<Opt>> = Symbol()
+// define your own `useStore` composition function
+export function useStore(): Store<Opt> {
+  return baseUseStore(key)
+}
 
 export default createStore<rootState>({
   getters,
@@ -25,8 +29,3 @@ export default createStore<rootState>({
     web,
   },
 })
-
-// define your own `useStore` composition function
-export function useStore(): Store<Opt> {
-  return baseUseStore(key)
-}
