@@ -13,12 +13,15 @@ type timeUnit = 'y' | 'Q' | 'M' | 'w' | 'd' | 'h' | 'm' | 's'
  */
 const timeFormat = (
   time: time,
-  formatOutput: string,
-  formatInput: string,
+  opts?: {
+    formatOutput?: string
+    formatInput?: string
+  },
 ): string => {
+  if (!opts) opts = {}
   // https://momentjs.com/docs/#/displaying/format/
   // 年YYYY、月:MM(01)M(1)、日:DD(01)D(1)、時HH(01)H(1)、分mm(01)m(1)、秒ss(01)s(1)
-  return moment(time, formatInput).format(formatOutput)
+  return moment(time, opts.formatInput).format(opts.formatOutput)
 }
 
 /**
@@ -34,18 +37,22 @@ const timeFormat = (
 const timeAdd = (
   time: time,
   dur: number,
-  unit: timeUnit = 'd',
-  endUnit: timeUnit,
-  formatOutput: string,
-  formatInput: string,
+  opts?: {
+    unit?: timeUnit
+    endUnit?: timeUnit
+    formatOutput?: string
+    formatInput?: string
+  },
 ): string => {
+  if (!opts) opts = {}
   // https://momentjs.com/docs/#/manipulating/add/
   // years y、quarters Q、months M、weeks w、days d、hours h、minutes m、seconds s
-  const momentTime = moment(time, formatInput)
+  const momentTime = moment(time, opts.formatInput)
+  if (!opts.unit) opts.unit = 'd'
   return momentTime
-    .add(dur, unit)
-    .endOf(endUnit)
-    .format(formatOutput || momentTime._f)
+    .add(dur, opts.unit)
+    .endOf(opts.endUnit)
+    .format(opts.formatOutput || momentTime._f)
 }
 
 /**
@@ -60,12 +67,16 @@ const timeAdd = (
 const timeDiff = (
   time1: time,
   time2: time,
-  floatResult = false,
-  unit: timeUnit = 'd',
-  formatInput: string,
+  opts?: {
+    floatResult?: boolean
+    unit?: timeUnit
+    formatInput?: string
+  },
 ): number => {
-  const time1_moment = moment(time1, formatInput)
-  const time2_moment = moment(time2, formatInput)
-  return time1_moment.diff(time2_moment, unit, floatResult)
+  if (!opts) opts = {}
+  if (!opts.unit) opts.unit = 'd'
+  const time1_moment = moment(time1, opts.formatInput)
+  const time2_moment = moment(time2, opts.formatInput)
+  return time1_moment.diff(time2_moment, opts.unit, Boolean(opts.floatResult))
 }
 export { timeFormat, timeAdd, timeDiff }
