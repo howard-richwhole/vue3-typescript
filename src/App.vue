@@ -42,4 +42,9 @@ form
   span
     &+button
       display: block
+      border: 1px solid #000
+      padding: 5px
+      &:hover
+        background: #ccc
+        color: white
 </style>
