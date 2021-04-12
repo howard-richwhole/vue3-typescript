@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div>{{ text }}</div>
     <div>reactive 物件{{ obj }}</div>
     <div>reactive 物件內的值，直接取用{{ objCount }}</div>
     <div>轉ref 後取用{{ refObjCount }}</div>
@@ -7,11 +8,10 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { ref, reactive, toRefs } from 'vue'
+import { ref, reactive, toRefs, defineComponent } from 'vue'
 import gsap from 'gsap'
 
-@Options({
+export default defineComponent({
   setup() {
     const text = ref('hi')
     text.value += ' you'
@@ -25,5 +25,4 @@ import gsap from 'gsap'
     return { text, obj, objCount: obj.count, refObjCount: refObj.count }
   },
 })
-export default class ErrorPage extends Vue {}
 </script>

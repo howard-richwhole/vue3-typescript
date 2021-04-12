@@ -1,23 +1,19 @@
 <template>
-  <div id="nav">
-    <Modal v-model="modalShow">
-      <VeeForm v-slot="{ submitForm }">
-        <Field name="password" rules="min:3" />
-        <ErrorMsg name="password" />
-        <button @click="submitForm">submit</button>
-      </VeeForm>
-    </Modal>
-
-    {{ testTime }}
-  </div>
-  <!-- <router-view /> -->
+  <router-view />
+  <Modal v-model="modalShow">
+    <VeeForm v-slot="{ submitForm }">
+      <Field name="password" rules="min:3" />
+      <ErrorMsg name="password" />
+      <button @click="submitForm">submit</button>
+    </VeeForm>
+  </Modal>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
 import { test } from '@/api/home'
 import { timeAdd } from '@/utils/time'
-// d(() => {})
+import { defineComponent } from 'vue'
+
 export default defineComponent({
   data() {
     return {
@@ -30,6 +26,7 @@ export default defineComponent({
       }),
     }
   },
+
   mounted() {
     // console.log(test)
     this.d_test({ sone: 'ss' })
