@@ -1,6 +1,6 @@
 import { required, integer, between, min } from '@vee-validate/rules'
 import { App } from 'Vue'
-import { defineRule, Form, Field, ErrorMessage } from 'vee-validate'
+import { defineRule, Form, Field, ErrorMessage, configure } from 'vee-validate'
 
 type testRes = boolean | string | Promise<string | boolean>
 
@@ -73,6 +73,9 @@ _.each(rules, ({ msg, test }, key) => {
     }
     return res || replaceVar(msg, argAry)
   })
+})
+configure({
+  validateOnInput: true,
 })
 
 export default {

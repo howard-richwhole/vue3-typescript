@@ -2,7 +2,8 @@
 router-view
 Modal(v-model="modalShow")
   VeeForm(v-slot="{ submitForm }")
-    Field(name="password" rules="min:3")
+    button(@click="changeMin") click
+    Field(name="password" :rules="`min:${min}`")
     ErrorMsg(name="password")
     button(@click="submitForm") submit
 </template>
@@ -16,6 +17,7 @@ export default defineComponent({
   data() {
     return {
       modalShow: true,
+      min: 3,
       d_test: d(test),
       testTime: timeAdd('2021-04-12', 1, {
         unit: 'd',
@@ -24,12 +26,14 @@ export default defineComponent({
       }),
     }
   },
-
   mounted() {
     // console.log(test)
     this.d_test({ sone: 'ss' })
   },
   methods: {
+    changeMin() {
+      this.min += 1
+    },
     test,
   },
 })
@@ -39,12 +43,14 @@ export default defineComponent({
 form
   input
     display: block
-  span
-    &+button
+  button
       display: block
       border: 1px solid #000
       padding: 5px
       &:hover
         background: #ccc
         color: white
+  span
+    &+button
+      background: red
 </style>
