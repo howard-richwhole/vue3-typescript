@@ -1,24 +1,13 @@
 // store.ts
 import { InjectionKey } from 'vue'
-import {
-  createStore,
-  useStore as baseUseStore,
-  Store,
-  Module,
-  GetterTree,
-} from 'vuex'
-import user, { State as userState } from './modules/user'
-import web, { State as webState } from './modules/web'
+import { createStore, useStore as baseUseStore, Store } from 'vuex'
+import user from './modules/user'
+import web from './modules/web'
 import getters, { rootState } from './getters'
 
-export interface Opt {
-  modules: { user: Module<userState, Opt>; web: Module<webState, Opt> }
-  getters: GetterTree<rootState, rootState>
-}
-
-const key: InjectionKey<Store<Opt>> = Symbol()
+export const key: InjectionKey<Store<rootState>> = Symbol()
 // define your own `useStore` composition function
-export function useStore(): Store<Opt> {
+export function useStore(): Store<rootState> {
   return baseUseStore(key)
 }
 

@@ -62,7 +62,8 @@
       "ecmaVersion": 2020
     },
     "globals": {
-      "d": "readonly"
+      "d": "readonly",
+      "anyfunc": "readonly"
     },
     "rules": {
       "prettier/prettier": [

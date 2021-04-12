@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { onMounted, ref, watch, defineComponent } from 'vue'
-import { useStore } from 'vuex'
+import { useStore } from '@/store'
 // 共用遮罩
 export default defineComponent({
   props: {

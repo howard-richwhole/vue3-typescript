@@ -15,12 +15,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { test } from '@/api/home'
 // d(() => {})
 export default defineComponent({
   data() {
     return {
       modalShow: true,
+      d_test: d(test),
     }
+  },
+  mounted() {
+    // console.log(test)
+    this.d_test({ sone: 'ss' })
+  },
+  methods: {
+    test,
   },
 })
 </script>

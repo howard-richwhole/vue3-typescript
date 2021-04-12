@@ -1,8 +1,8 @@
 import { Store } from 'vuex'
-import { Opt } from './index'
+import { rootState } from './getters'
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    $store: Store<Opt>
+    $store: Store<rootState>
   }
 }

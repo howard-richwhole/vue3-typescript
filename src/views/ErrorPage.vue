@@ -25,7 +25,5 @@ import gsap from 'gsap'
     return { text, obj, objCount: obj.count, refObjCount: refObj.count }
   },
 })
-export default class HelloWorld extends Vue {
-  msg!: string
-}
+export default class ErrorPage extends Vue {}
 </script>
