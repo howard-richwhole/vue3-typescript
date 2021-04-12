@@ -88,17 +88,19 @@ export default defineComponent({
 <style lang="sass" scoped>
 $t: 0.3s
 .modal
-  ::deep().modal-box
+  &:deep().modal-box
     animation: rebound $t
     > * > *
       transition: transform $t * 1.1 ease $t/2, opacity $t * 1.1 ease $t/2
-.modal-enter-active,.modal-leave-active
+.modal-enter-active,
+.modal-leave-active
   transition: opacity $t
-  ::deep().modal-box
+  &:deep().modal-box
     transition: transform $t
-.modal-enter-from,.modal-leave-to
+.modal-enter-from,
+.modal-leave-to
   opacity: 0
-  ::deep().modal-box
+  &:deep().modal-box
     transform: scale(0.9)
     > * > *
       transform: translate(0, 10px)
