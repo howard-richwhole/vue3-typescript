@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import guards from './guards'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,11 +15,12 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   scrollBehavior() {
     return { top: 0 }
   },
   routes,
 })
+router.beforeEach(guards)
 
 export default router
