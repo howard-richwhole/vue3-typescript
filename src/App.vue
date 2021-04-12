@@ -8,7 +8,7 @@
       </VeeForm>
     </Modal>
 
-    {{ $store.state.user.count }}
+    {{ testTime }}
   </div>
   <!-- <router-view /> -->
 </template>
@@ -16,12 +16,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { test } from '@/api/home'
+import { timeAdd } from '@/utils/time'
 // d(() => {})
 export default defineComponent({
   data() {
     return {
       modalShow: true,
       d_test: d(test),
+      testTime: timeAdd('2021-04-12', 1, {
+        unit: 'd',
+        formatOutput: 'MM-DD HH:mm',
+        endUnit: 'd',
+      }),
     }
   },
   mounted() {
