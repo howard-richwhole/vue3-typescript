@@ -43,15 +43,13 @@ export default defineComponent({
       context.emit('update:modelValue', false)
     }
 
-    //const box = ref(null) // https://composition-api.vuejs.org/zh/api.html#%E6%A8%A1%E6%9D%BF-refs
-    const over = ref(null)
+    const box = ref() // https://composition-api.vuejs.org/zh/api.html#%E6%A8%A1%E6%9D%BF-refs
+    const over = ref(false)
     const duration = ref('0.3s')
     const setFlexStyle = () => {
-      // console.log(this)
-      // console.log(box)
-      // if (box.value) {
-      //   over.value = box.value.offsetHeight > innerHeight
-      // }
+      if (box.value) {
+        over.value = box.value.offsetHeight > innerHeight
+      }
     }
     onMounted(setFlexStyle)
     watch(() => store.state.web.size, setFlexStyle)
@@ -61,7 +59,7 @@ export default defineComponent({
         if (ni) setTimeout(setFlexStyle, 300)
       },
     )
-    return { closeModal, over, duration }
+    return { closeModal, box, over, duration }
   },
 })
 </script>
@@ -107,7 +105,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 $t: 0.3s;
 .modal {
-  /deep/.modal-box {
+  :deep().modal-box {
     animation: rebound $t;
     > * > * {
       transition: transform $t * 1.1 ease $t/2, opacity $t * 1.1 ease $t/2;
@@ -117,14 +115,14 @@ $t: 0.3s;
 .modal-enter-active,
 .modal-leave-active {
   transition: opacity $t;
-  /deep/.modal-box {
+  :deep().modal-box {
     transition: transform $t;
   }
 }
 .modal-enter-from,
 .modal-leave-to {
   opacity: 0;
-  /deep/.modal-box {
+  :deep().modal-box {
     transform: scale(0.9);
     > * > * {
       transform: translate(0, 10px);
