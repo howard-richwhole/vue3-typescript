@@ -1,12 +1,10 @@
-<template>
-  <router-view />
-  <Modal v-model="modalShow">
-    <VeeForm v-slot="{ submitForm }">
-      <Field name="password" rules="min:3" />
-      <ErrorMsg name="password" />
-      <button @click="submitForm">submit</button>
-    </VeeForm>
-  </Modal>
+<template lang="pug">
+router-view
+Modal(v-model="modalShow")
+  VeeForm(v-slot="{ submitForm }")
+    Field(name="password" rules="min:3")
+    ErrorMsg(name="password")
+    button(@click="submitForm") submit
 </template>
 
 <script lang="ts">
@@ -36,3 +34,9 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="sass" scoped>
+form
+  input
+    display: block
+</style>
