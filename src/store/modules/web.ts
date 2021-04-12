@@ -5,12 +5,14 @@ export interface State {
   token: string | null
   size: { vw: number; vh: number }
 }
+
 const state = (): State => {
   return {
     token: LocalStorage.get('token'),
     size: { vw: innerWidth, vh: innerHeight },
   }
 }
+
 const mutations = {
   SET_TOKEN(state: State, token: string): void {
     if (token) {
@@ -24,6 +26,7 @@ const mutations = {
     state.size = { vw: innerWidth, vh: innerHeight }
   },
 }
+
 const actions = {
   detectSize({ commit }: { commit: Commit }): void {
     commit('SET_SIZE')
