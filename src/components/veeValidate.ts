@@ -47,7 +47,7 @@ const rules: ruleList = {
   min: { msg: '输入内容未满 {{0}} 字元', test: min },
 }
 
-// 取代{{0}}
+// 取代{{0}}，0為參數陣列的index
 function replaceVar(msg: string, ary: Array<string>): string {
   try {
     const regex = /\{\{\d{1,}\}\}/g
