@@ -39,4 +39,7 @@ export default defineComponent({
 form
   input
     display: block
+  span
+    &+button
+      display: block
 </style>
