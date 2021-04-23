@@ -5,7 +5,4 @@ declare module '*.vue' {
   export default component
 }
 
-declare const _
-declare const d
-
 declare module 'moment/min/moment.min'

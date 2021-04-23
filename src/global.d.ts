@@ -4,5 +4,7 @@ interface Window {
   d: (cb: anyfunc, time = 1000) => DebouncedFunc<anyfunc>
 }
 
+declare const _
+declare const d
 // declare namespace _ {
 // }
