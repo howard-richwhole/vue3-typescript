@@ -4,8 +4,10 @@ import { defineRule, Form, Field, ErrorMessage, configure } from 'vee-validate'
 
 type testRes = boolean | string | Promise<string | boolean>
 
+type msg = string | ((val: string, argAry: string[]) => string)
+type rule = { msg: msg; test: unknown }
 interface ruleList {
-  [key: string]: { msg: string; test: unknown }
+  [key: string]: rule
 }
 
 const rules: ruleList = {
@@ -44,26 +46,12 @@ const rules: ruleList = {
   required: { msg: '必填', test: required },
   integer: { msg: '请输入整数金额', test: integer },
   between: { msg: '输入金额已超出上下限', test: between },
-  min: { msg: '输入内容未满 {{0}} 字元', test: min },
-}
-
-// 取代{{0}}，0為參數陣列的index
-function replaceVar(msg: string, ary: Array<string>): string {
-  try {
-    const regex = /\{\{\d{1,}\}\}/g
-    const msgAry = _.split(msg, regex)
-    _.each(msg.match(regex), (i, index) => {
-      const target_index = Number(i.replace(/\{|\}/g, ''))
-      msgAry[index] += ary[target_index] || ''
-    })
-    return _.join(msgAry, '')
-  } catch {
-    return msg
-  }
+  min: { msg: (val, [len]): string => `输入内容未满 ${len} 字元`, test: min },
 }
 
 // 註冊規則
-_.each(rules, ({ msg, test }, key) => {
+_.each(rules, ({ msg, test }: rule, key: string) => {
+  // @ts-ignore
   defineRule(key, (value: string, argAry: Array<string>) => {
     let res: testRes = false
     if (test instanceof RegExp) {
@@ -71,7 +59,11 @@ _.each(rules, ({ msg, test }, key) => {
     } else if (test instanceof Function) {
       res = test(value, argAry)
     }
-    return res || replaceVar(msg, argAry)
+    let resMsg = msg
+    if (msg instanceof Function) {
+      resMsg = msg(value, argAry)
+    }
+    return res || resMsg
   })
 })
 configure({
