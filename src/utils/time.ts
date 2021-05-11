@@ -12,12 +12,11 @@ type timeUnit = 'y' | 'Q' | 'M' | 'w' | 'd' | 'h' | 'm' | 's'
  */
 const timeFormat = (
   time: time,
-  opts?: {
+  opts: {
     formatOutput?: string
     formatInput?: string
-  },
+  } = {},
 ): string => {
-  if (!opts) opts = {}
   // https://momentjs.com/docs/#/displaying/format/
   // 年YYYY、月:MM(01)M(1)、日:DD(01)D(1)、時HH(01)H(1)、分mm(01)m(1)、秒ss(01)s(1)
   return moment(time, opts.formatInput).format(opts.formatOutput)
@@ -35,14 +34,13 @@ const timeFormat = (
 const timeAdd = (
   time: time,
   dur: number,
-  opts?: {
+  opts: {
     unit?: timeUnit
     endUnit?: timeUnit
     formatOutput?: string
     formatInput?: string
-  },
+  } = {},
 ): string => {
-  if (!opts) opts = {}
   // https://momentjs.com/docs/#/manipulating/add/
   // years y、quarters Q、months M、weeks w、days d、hours h、minutes m、seconds s
   const momentTime = moment(time, opts.formatInput)
@@ -64,13 +62,12 @@ const timeAdd = (
 const timeDiff = (
   time1: time,
   time2: time,
-  opts?: {
+  opts: {
     floatResult?: boolean
     unit?: timeUnit
     formatInput?: string
-  },
+  } = {},
 ): number => {
-  if (!opts) opts = {}
   if (!opts.unit) opts.unit = 'd'
   const time1_moment = moment(time1, opts.formatInput)
   const time2_moment = moment(time2, opts.formatInput)
