@@ -37,6 +37,7 @@ const timeAdd = (
   opts: {
     unit?: timeUnit
     endUnit?: timeUnit
+    startUnit?: timeUnit
     formatOutput?: string
     formatInput?: string
   } = {},
@@ -48,6 +49,7 @@ const timeAdd = (
   return momentTime
     .add(dur, opts.unit)
     .endOf(opts.endUnit)
+    .startOf(opts.startUnit)
     .format(opts.formatOutput || momentTime._f)
 }
 
