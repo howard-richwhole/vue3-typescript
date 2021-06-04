@@ -63,7 +63,8 @@ _.each(rules, ({ msg, test }: rule, key: string) => {
     if (msg instanceof Function) {
       resMsg = msg(value, argAry)
     }
-    return res || resMsg
+    const allowEmpty = key === 'required' ? false : !value
+    return allowEmpty || res || resMsg
   })
 })
 configure({
