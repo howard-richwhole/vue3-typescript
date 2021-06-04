@@ -11,6 +11,7 @@
     "@types/crypto-js": "^4.0.1",
     "@types/lodash": "^4.14.168",
     "@vee-validate/rules": "^4.1.20",
+    "crypto-js": "^4.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "gsap": "^3.6.1",
