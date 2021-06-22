@@ -63,7 +63,7 @@ _.each(rules, ({ msg, test }: rule, key: string) => {
     if (msg instanceof Function) {
       resMsg = msg(value, argAry)
     }
-    const allowEmpty = key === 'required' ? false : !value
+    const allowEmpty = key.match(/^(required|pwdConfirm)$/) ? false : !value
     return allowEmpty || res || resMsg
   })
 })
